@@ -10,13 +10,17 @@ import { useCountdown } from "@/hooks/useCountdown";
 interface CameraProps {
   state: BoothState;
   setState: Dispatch<SetStateAction<BoothState>>;
+  photos: string[];
+  setPhotos: Dispatch<SetStateAction<string[]>>;
 }
 
 export default function Camera({
   state,
   setState,
+  photos,
+  setPhotos
 }: CameraProps) {
-  const [photos, setPhotos] = useState<string[]>([]);
+  
   const {
     videoRef,
     startCamera,

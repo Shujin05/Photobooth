@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Camera from "@/components/Camera";
 import { BoothState } from "@/types/photobooth";
+import Strip from "@/components/Strip";
+import { exportStrip } from "@/lib/export";
+
 
 export default function Home() {
   const [state, setState] = useState<BoothState>("idle");
+  const [photos, setPhotos] = useState<string[]>([]);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-pink-50">
@@ -28,12 +33,26 @@ export default function Home() {
         <Camera
           state={state}
           setState={setState}
+          photos={photos}
+          setPhotos={setPhotos}
         />
       )}
 
       {state === "preview" && (
         <div>
-          Preview coming soon...
+          <Strip
+              photos={photos}
+              stripRef={stripRef}
+          />
+          <button
+            onClick={() => {
+                if (!stripRef.current) return;
+
+                exportStrip(stripRef.current);
+            }}
+        >
+            Download PNG
+        </button>
         </div>
       )}
     </main>
