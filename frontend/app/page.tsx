@@ -13,7 +13,20 @@ export default function Home() {
   const stripRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-pink-50">
+    <main
+      className="
+        flex
+        min-h-screen
+        items-center
+        justify-center
+        bg-cover
+        bg-center
+        bg-no-repeat
+      "
+      style={{
+        backgroundImage: "url('/photobooth-bg.png')",
+      }}
+    >
       {state === "idle" && (
         <div className="flex flex-col items-center gap-6">
           <h1 className="text-5xl font-bold text-pink-500">

@@ -61,12 +61,8 @@ export default function Camera({
           autoPlay
           playsInline
           muted
-          className="
-            h-[480px]
-            w-[360px]
-            object-cover
-            scale-x-[-1]
-          "
+          style={{ transform: "scaleX(-1)" }}
+          className="h-[480px] w-[360px] object-cover"
         />
 
         <Countdown count={count} />
