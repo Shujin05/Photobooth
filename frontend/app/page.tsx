@@ -42,6 +42,7 @@ export default function Home() {
         </div>
       )}
 
+      // Render the Camera component when the state is "camera"
       {state === "camera" && (
         <Camera
           state={state}
